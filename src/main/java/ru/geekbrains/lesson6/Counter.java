@@ -6,8 +6,7 @@ import java.util.Map;
 public class Counter {
     private static final Map<Class<?>, Integer> sTotalCounts = new HashMap<Class<?>, Integer>();
     
-    public int getTotalCount()
-    {
+    public int getTotalCount() {
         return sTotalCounts.get(this.getClass());
     }
 
