@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 public class CounterExample {
 
     private static int counter = 0;
+    private static int step = 1;
     private static JLabel counterValueView;
     private static JTextField field;
 
@@ -39,21 +40,24 @@ public class CounterExample {
         decrementButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                refreshCounterValueView(--counter);
+                counter -= step;
+                refreshCounterValueView(counter);
             }
         });
         incrementButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                refreshCounterValueView(++counter);
+                counter += step;
+                refreshCounterValueView(counter);
             }
         });
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 counter = 0;
+                step = 1;
                 refreshCounterValueView(counter);
-                field.setText(null);
+                field.setText(String.valueOf(step));
             }
         });
     }
@@ -66,8 +70,7 @@ public class CounterExample {
         field.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                counter = Integer.parseInt(field.getText());
-                refreshCounterValueView(counter);
+                step = Integer.parseInt(field.getText());
             }
         });
     }
